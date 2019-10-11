@@ -1,0 +1,25 @@
+#tomcat
+server:
+  port: 8082
+
+spring:
+  application:
+    name: kp-backup
+
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8000"
+kp:
+  backup:
+    datasource:
+      host: localhost
+      userName: root
+      password: 331224
+      database: databackup
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
