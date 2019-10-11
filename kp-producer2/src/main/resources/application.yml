@@ -1,0 +1,27 @@
+# tomcat
+server:
+  port: 8004
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: kp-producer
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8000"
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name} #注册服务的名称
+# 开放健康检查接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
