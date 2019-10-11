@@ -1,6 +1,6 @@
 # 修改端口 上下文
 server:
-  port: 100000
+  port: 8002
   servlet:
     context-path: /
 
@@ -36,14 +36,24 @@ spring:
       pool-prepared-statements: true
       max-open-prepared-statements: 50
       max-pool-prepared-statement-per-connection-size: 20
+  #monitro
   boot:
     admin:
       client:
         url: "http://localhost:8000"
-
+  #注册服务
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
+  #注册服务
+  endpoint:
+    health:
+      show-details: always

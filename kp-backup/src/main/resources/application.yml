@@ -2,6 +2,7 @@
 server:
   port: 8082
 
+#monitor
 spring:
   application:
     name: kp-backup
@@ -10,6 +11,14 @@ spring:
     admin:
       client:
         url: "http://localhost:8000"
+  #注册服务
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+#datasource
 kp:
   backup:
     datasource:
@@ -18,8 +27,13 @@ kp:
       password: 331224
       database: databackup
 
+#monitor
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  #注册服务
+  endpoint:
+    health:
+      show-details: always
